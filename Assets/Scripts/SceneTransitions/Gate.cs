@@ -27,10 +27,12 @@ public class Gate : MonoBehaviour
 	{
 		if (other.tag == "Monster")
 		{
+			Debug.Log("Monster in");
 			hasMonster = true;
 		}
 		else if (other.tag == "Oracle")
 		{
+			Debug.Log("Oracle in");
 			hasOracle = true;
 		}
 	}
@@ -39,10 +41,12 @@ public class Gate : MonoBehaviour
 	{
 		if (other.tag == "Monster")
 		{
+			Debug.Log("Monster out");
 			hasMonster = false;
 		}
 		else if (other.tag == "Oracle")
 		{
+			Debug.Log("Oracle out");
 			hasOracle = false;
 		}
 	}

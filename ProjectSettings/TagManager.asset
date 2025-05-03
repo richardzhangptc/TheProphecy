@@ -8,6 +8,7 @@ TagManager:
   - EnemyHitBox
   - Monster
   - Oracle
+  - gate
   layers:
   - Default
   - TransparentFX

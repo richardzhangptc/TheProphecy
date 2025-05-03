@@ -7,16 +7,12 @@ public class GateManager : MonoBehaviour
 {
 	[SerializeField] private string nextScene;
 
-	private List<Gate> gates;
+	private GameObject[] gates;
 
 	// Graps all gates that exists at the beginning of the level
 	void Start()
     {
-        GameObject[] gateObjects = (GameObject.FindGameObjectsWithTag("gate"));
-		foreach (var gateObject in gateObjects)
-		{
-			gates.Add(gateObject.GetComponent<Gate>());
-		}
+        gates = (GameObject.FindGameObjectsWithTag("gate"));
     }
 
     // Update is called once per frame
@@ -25,13 +21,14 @@ public class GateManager : MonoBehaviour
     	bool hasOracle = false; 
 		bool hasMonster = false;
 
-		foreach (Gate gate in gates)
+		foreach (var gate in gates)
 		{
-			if (gate.HasOracle == true)
+			var gateComponent = gate.GetComponent<Gate>();
+			if (gateComponent.HasOracle == true)
 			{
 				hasOracle = true;
 			}
-			if (gate.HasMonster == true)
+			if (gateComponent.HasMonster == true)
 			{
 				hasMonster = true;
 			}
