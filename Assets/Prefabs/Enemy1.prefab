@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6300380611381735361}
   - component: {fileID: 3951710558232527465}
   - component: {fileID: 4020088491527215245}
+  - component: {fileID: 15672095415241079}
   - component: {fileID: 819386372078121310}
   - component: {fileID: 5484792013369762465}
   m_Layer: 0
@@ -177,6 +178,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypointDir: {x: 0, y: 0, z: 0}
+--- !u!114 &15672095415241079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984559462690146840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61e22ebccc5e4e8da202b3257ce3258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &819386372078121310
 MonoBehaviour:
   m_ObjectHideFlags: 0

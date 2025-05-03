@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Image HurtOverlay;
+    [SerializeField] private Slider healthSlider;
     #region Singleton and Awake
 
     public static UIManager Instance;
@@ -34,5 +35,10 @@ public class UIManager : MonoBehaviour
         HurtOverlay.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         HurtOverlay.gameObject.SetActive(false);
+    }
+
+    public void UpdateHealthSlider()
+    {
+        
     }
 }
