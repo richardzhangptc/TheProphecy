@@ -10,7 +10,6 @@ public class Enemy1Hitscan : MonoBehaviour
     {
         if (other.tag == "PlayerHitBox")
         {
-            Debug.Log("p1");
             Player1HealthManagement playerHealth = other.transform.parent.GetComponent<Player1HealthManagement>();
             playerHealth.ReduceHealth(damage);
         }
