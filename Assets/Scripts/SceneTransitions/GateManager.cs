@@ -7,12 +7,16 @@ public class GateManager : MonoBehaviour
 {
 	[SerializeField] private string nextScene;
 
-	private Gate[] gates;
+	private List<Gate> gates;
 
 	// Graps all gates that exists at the beginning of the level
 	void Start()
     {
-        gates = (GameObjects.FindGameObjectsWithTag("gate")).GetComponent<Gate>();
+        GameObject[] gateObjects = (GameObject.FindGameObjectsWithTag("gate"));
+		foreach (var gateObject in gateObjects)
+		{
+			gates.Add(gateObject.GetComponent<Gate>());
+		}
     }
 
     // Update is called once per frame
@@ -41,6 +45,6 @@ public class GateManager : MonoBehaviour
 
 	private void SceneTransition()
 	{
-		SceneManager.LoadScene(SceneManager.GetSceneByName(nextScene));
+		SceneManager.LoadScene(nextScene);
 	}
 }
