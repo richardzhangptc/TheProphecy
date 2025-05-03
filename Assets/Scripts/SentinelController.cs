@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
 
-public class Enemy1Controller : MonoBehaviour
+public class SentinelController : MonoBehaviour
 {
     private AIPathNew pathScript;
     private float movementForce = 500f;

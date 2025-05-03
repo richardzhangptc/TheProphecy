@@ -38,10 +38,14 @@ public class Enemy1HealthManagement : MonoBehaviour
 
     private IEnumerator HurtFlash()
     {
-        Debug.Log("HURTFLASH");
-        GetComponent<SpriteRenderer>().material = hurtFlashMat;
-        yield return new WaitForSeconds(0.2f);
-        GetComponent<SpriteRenderer>().material = defaultMat;
+        for (int i = 0; i < 3; i++)
+        {
+            GetComponent<SpriteRenderer>().material = hurtFlashMat;
+            yield return new WaitForSeconds(0.1f);
+            GetComponent<SpriteRenderer>().material = defaultMat;
+            yield return new WaitForSeconds(0.1f);
+            
+        }
     }
     
 }

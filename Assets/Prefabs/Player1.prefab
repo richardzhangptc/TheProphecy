@@ -264,6 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da16d42e656946ae8b7ddba26d9b425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hurtFlashMat: {fileID: 2100000, guid: c0fd46d2e0557421ca2b958c4de43342, type: 2}
+  defaultMat: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
 --- !u!50 &1389063936238684810
 Rigidbody2D:
   serializedVersion: 4
@@ -504,7 +506,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 1.2}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!1 &4345233994941311223
 GameObject:

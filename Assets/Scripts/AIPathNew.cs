@@ -17,7 +17,7 @@ namespace Pathfinding {
 
 
         public Path path; //the calculated path
-        public float waypointDistanceThreshold = 2f; //distance from waypoint needed to cross in order to switch to the next waypoint
+        public float waypointDistanceThreshold = 1f; //distance from waypoint needed to cross in order to switch to the next waypoint
 
 
         private int currentWaypoint = 0; //the waypoint we are currently moving toward
