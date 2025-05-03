@@ -65,10 +65,6 @@ namespace Pathfinding {
 
         private void Update()
         {
-            if (target != null)
-            {
-                Debug.Log(target.gameObject);
-            }
            
             if(path == null)
             {

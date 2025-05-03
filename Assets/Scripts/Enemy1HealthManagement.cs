@@ -1,11 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy1HealthManagement : MonoBehaviour
 {
-    private int maxHealth = 1;
-    private int currentHealth = 1;
+    [SerializeField] private Material hurtFlashMat;
+    [SerializeField] private Material defaultMat;
+    [SerializeField] private int maxHealth = 2;
+    [SerializeField] private int currentHealth = 2;
+
+    private void Start()
+    {
+        // defaultMat = GetComponent<SpriteRenderer>().material;
+    }
 
     public void ReduceHealth(int reduction)
     {
@@ -13,7 +21,10 @@ public class Enemy1HealthManagement : MonoBehaviour
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
+            return;
         }
+
+        StartCoroutine(HurtFlash());
     }
 
     public void AddHealth(int addition)
@@ -23,6 +34,14 @@ public class Enemy1HealthManagement : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+    }
+
+    private IEnumerator HurtFlash()
+    {
+        Debug.Log("HURTFLASH");
+        GetComponent<SpriteRenderer>().material = hurtFlashMat;
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<SpriteRenderer>().material = defaultMat;
     }
     
 }

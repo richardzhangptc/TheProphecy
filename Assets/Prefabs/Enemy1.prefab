@@ -81,9 +81,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.2216981, b: 0.2216981, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -190,6 +190,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61e22ebccc5e4e8da202b3257ce3258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hurtFlashMat: {fileID: 2100000, guid: c0fd46d2e0557421ca2b958c4de43342, type: 2}
+  defaultMat: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  maxHealth: 2
+  currentHealth: 2
 --- !u!114 &819386372078121310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,7 +423,7 @@ GameObject:
   - component: {fileID: 7472574462936625505}
   m_Layer: 0
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: EnemyHitBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

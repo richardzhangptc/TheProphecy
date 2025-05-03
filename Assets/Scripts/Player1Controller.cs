@@ -8,23 +8,26 @@ public class Player1Controller : MonoBehaviour
     private bool receivingMovementInput = false;
     private Vector2 moveDirection = Vector2.zero;
     private Rigidbody2D myRB;
+    private Animator myAnim;
     private float movementForce = 1000f;
 
     private void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
+        myAnim = GetComponent<Animator>();
     }
 
     private void Update()
     {
         GetMovementInput();
+        GetAttackInput();
     }
 
     private void FixedUpdate()
     {
         ApplyMovement();
     }
-
+    
     private void GetMovementInput()
     {
         Vector2 moveInput = Vector2.zero;
@@ -51,12 +54,29 @@ public class Player1Controller : MonoBehaviour
         
     }
 
+    private void GetAttackInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log(myAnim.GetFloat("xDir"));
+            Debug.Log(myAnim.GetFloat("yDir"));
+            myAnim.SetTrigger("Attack");
+        }
+    }
+
 
     private void ApplyMovement()
     {
         if(receivingMovementInput == true)
         {
+            myAnim.SetFloat("xDir", moveDirection.x);
+            myAnim.SetFloat("yDir", moveDirection.y);
+            myAnim.SetBool("isWalking", true);
             myRB.AddForce(moveDirection.normalized * movementForce, ForceMode2D.Force);
+        }
+        else
+        {
+            myAnim.SetBool("isWalking", false);
         }
     }
 }
