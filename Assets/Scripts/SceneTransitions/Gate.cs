@@ -4,15 +4,47 @@ using UnityEngine;
 
 public class Gate : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	private bool hasMonster;
+	public bool HasMonster
+	{
+		get { return hasMonster; }
+	}
+
+	private bool hasOracle;
+	public bool HasOracle
+	{
+		get { return hasOracle; }
+	}
+
+	void Start()
+	{
+		hasOracle = false;
+		hasMonster = false;
+	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.tag == "Monster")
+		{
+			hasMonster = true;
+		}
+		else if (other.tag == "Oracle")
+		{
+			hasOracle = true;
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D other)
+	{
+		if (other.tag == "Monster")
+		{
+			hasMonster = false;
+		}
+		else if (other.tag == "Oracle")
+		{
+			hasOracle = false;
+		}
+	}
+
 }
