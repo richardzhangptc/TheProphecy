@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,11 @@ public class Player1HealthManagement : MonoBehaviour
 {
     private int maxHealth = 6;
     private int currentHealth = 6;
+
+    private void Start()
+    {
+        UIManager.Instance.UpdateHealthSlider(currentHealth);
+    }
 
     public void ReduceHealth(int reduction)
     {
@@ -18,6 +24,7 @@ public class Player1HealthManagement : MonoBehaviour
             string currentSceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene(currentSceneName);
         }
+        UIManager.Instance.UpdateHealthSlider(currentHealth);
     }
 
     public void AddHealth(int addition)
@@ -27,6 +34,7 @@ public class Player1HealthManagement : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+        UIManager.Instance.UpdateHealthSlider(currentHealth);
     }
     
     

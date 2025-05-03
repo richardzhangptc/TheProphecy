@@ -37,8 +37,8 @@ public class UIManager : MonoBehaviour
         HurtOverlay.gameObject.SetActive(false);
     }
 
-    public void UpdateHealthSlider()
+    public void UpdateHealthSlider(int currentHealth)
     {
-        
+        healthSlider.value = currentHealth;
     }
 }

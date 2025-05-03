@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PlayerHitBox
   - EnemyHitBox
+  - Monster
+  - Oracle
   layers:
   - Default
   - TransparentFX
