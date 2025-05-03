@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player1Controller : MonoBehaviour
+public class Player2Controller : MonoBehaviour
 {
     private bool receivingMovementInput = false;
     private Vector2 moveDirection = Vector2.zero;
@@ -29,13 +28,13 @@ public class Player1Controller : MonoBehaviour
     {
         Vector2 moveInput = Vector2.zero;
         
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.UpArrow))
             moveInput.y += 1;
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.DownArrow))
             moveInput.y -= 1;
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.RightArrow))
             moveInput.x += 1;
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftArrow))
             moveInput.x -= 1;
         
         if(moveInput != Vector2.zero) //the movement input vector is receiving input
