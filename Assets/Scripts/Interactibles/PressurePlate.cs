@@ -7,6 +7,7 @@ public class PressurePlate : MonoBehaviour
 {
 	[SerializeField] private UnityEvent _PressPlate;
 	[SerializeField] private UnityEvent _ReleasePlate;
+	private Animator myAnim;
 
 	// Pressure plate state
 	public enum PlateState {Pressed, Released};
@@ -18,6 +19,7 @@ public class PressurePlate : MonoBehaviour
 	{
 		pstate = PlateState.Released;
 		NumActivatorsOnPlate = 0;
+		myAnim = GetComponent<Animator>();
 	}
 
 	// The tags of every possible thing that can activate this
@@ -33,6 +35,7 @@ public class PressurePlate : MonoBehaviour
 				{
 					_PressPlate?.Invoke();
 					pstate = PlateState.Pressed;
+					myAnim.SetBool("isPressed", true);
 					NumActivatorsOnPlate++;
 					break;
 				}
@@ -93,6 +96,7 @@ public class PressurePlate : MonoBehaviour
 		{
 			_ReleasePlate?.Invoke();
 			pstate = PlateState.Released;
+			myAnim.SetBool("isPressed", false);
 		}
 
 	}

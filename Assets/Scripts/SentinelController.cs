@@ -6,9 +6,15 @@ using UnityEngine;
 
 public class SentinelController : MonoBehaviour
 {
+    [SerializeField] private float startingAngle;
     public float rotationSpeed = 180f; // Degrees per second
     private float targetAngle;
     private bool shouldRotate = false;
+
+    private void Start()
+    {
+        transform.rotation = Quaternion.Euler(0f, 0f, startingAngle);
+    }
 
     public void RotateToTargetAngleDeg(float tAngle)
     {

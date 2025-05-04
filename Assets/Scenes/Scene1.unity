@@ -660,63 +660,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3870025702548112192, guid: 70c5230cde0ed4b629c780a6244521b3, type: 3}
   m_PrefabInstance: {fileID: 2862722268474399216}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1652420509
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2544467935143894041, guid: 72c5cd8b60e6cd5b6b29404567340a4f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 2544467935143894041, guid: 72c5cd8b60e6cd5b6b29404567340a4f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.86
-      objectReference: {fileID: 0}
-    - target: {fileID: 2544467935143894041, guid: 72c5cd8b60e6cd5b6b29404567340a4f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2544467935143894041, guid: 72c5cd8b60e6cd5b6b29404567340a4f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2544467935143894041, guid: 72c5cd8b60e6cd5b6b29404567340a4f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2544467935143894041, guid: 72c5cd8b60e6cd5b6b29404567340a4f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2544467935143894041, guid: 72c5cd8b60e6cd5b6b29404567340a4f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2544467935143894041, guid: 72c5cd8b60e6cd5b6b29404567340a4f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2544467935143894041, guid: 72c5cd8b60e6cd5b6b29404567340a4f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2544467935143894041, guid: 72c5cd8b60e6cd5b6b29404567340a4f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6104240111269285624, guid: 72c5cd8b60e6cd5b6b29404567340a4f, type: 3}
-      propertyPath: m_Name
-      value: Box
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 72c5cd8b60e6cd5b6b29404567340a4f, type: 3}
 --- !u!1 &1689028793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,6 +996,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1880962374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1880962376}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1880962376
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880962374}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1934487770
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,6 +1350,9 @@ MonoBehaviour:
   - {fileID: 1808586223}
   - {fileID: 1540351600}
   _relayActivation:
+    m_PersistentCalls:
+      m_Calls: []
+  _relayDeactivation:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &2004938917
@@ -1808,6 +1785,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 975955225}
   - {fileID: 1876884849}
+  - {fileID: 1880962376}
   - {fileID: 7504882955010979269}
   - {fileID: 73141438505051049}
   - {fileID: 2862722268474399216}
@@ -1817,7 +1795,6 @@ SceneRoots:
   - {fileID: 1976479328}
   - {fileID: 519131597}
   - {fileID: 7839510630442685438}
-  - {fileID: 1652420509}
   - {fileID: 1646632129003785187}
   - {fileID: 1934487772}
   - {fileID: 2004938917}
