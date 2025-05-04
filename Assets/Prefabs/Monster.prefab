@@ -143,9 +143,10 @@ GameObject:
   - component: {fileID: 4161017188513959597}
   - component: {fileID: 1389063936238684810}
   - component: {fileID: 1664309796034914969}
+  - component: {fileID: 8424061590124310452}
   m_Layer: 7
-  m_Name: Player1
-  m_TagString: Player
+  m_Name: Monster
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -208,7 +209,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -376618953, guid: 0159b2f5bcab4462bb6baf6f9d33be17, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0261db0a05b9746c6b1044f2b153f100, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -329,7 +330,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 16, y: 16}
+    oldSize: {x: 0.78, y: 1.5}
     newSize: {x: 16, y: 16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -338,6 +339,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8424061590124310452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062746188470177500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a93d5b5276e44d28557913d0979a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabDistance: 2
+  grabButton: v
 --- !u!1 &2177912050264988583
 GameObject:
   m_ObjectHideFlags: 0

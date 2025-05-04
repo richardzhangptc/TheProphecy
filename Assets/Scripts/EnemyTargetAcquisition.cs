@@ -23,7 +23,7 @@ public class EnemyTargetAcquisition : MonoBehaviour
             hitMask += LayerMask.GetMask("Objects");
 
             RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, collided.gameObject.transform.position - transform.position, 100f, hitMask); //raycast origin, direction
-            if(hitInfo.collider != null && Utils.Utils.Utils.FindClosestRootWithSprite(hitInfo.collider.gameObject).tag == "Player") //have to get the root of the hit because the cast collides only with the player's outer most collider
+            if(hitInfo.collider != null && Utils.Utils.Utils.FindClosestRootWithSprite(hitInfo.collider.gameObject).tag == "Monster") //have to get the root of the hit because the cast collides only with the player's outer most collider
             {
                 pathScript.target = Utils.Utils.Utils.FindClosestRootWithSprite(hitInfo.collider.gameObject).transform;
                 pathScript.inCombat = true;

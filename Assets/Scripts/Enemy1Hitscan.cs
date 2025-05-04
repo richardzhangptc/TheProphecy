@@ -14,7 +14,11 @@ public class Enemy1Hitscan : MonoBehaviour
         if (other.tag == "PlayerHitBox" && blocked == false)
         {
             Player1HealthManagement playerHealth = other.transform.parent.GetComponent<Player1HealthManagement>();
+            KnockbackHandler playerKnockback = other.transform.parent.GetComponent<KnockbackHandler>();
+            
             playerHealth.ReduceHealth(damage);
+            // playerKnockback.ApplyKnockbackToSelf();
+            
             blocked = true;
             StartCoroutine(ExpireBlock());
         }

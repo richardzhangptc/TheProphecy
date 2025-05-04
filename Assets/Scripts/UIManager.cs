@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Image HurtOverlay;
+    [SerializeField] private Image lightOverlay;
     [SerializeField] private Slider healthSlider;
     #region Singleton and Awake
 
@@ -41,4 +43,35 @@ public class UIManager : MonoBehaviour
     {
         healthSlider.value = currentHealth;
     }
+
+    public void FadeInLightOverlay()
+    {
+        StartCoroutine(FadeInLightRoutine());
+    }
+
+    public void CancelLightFadeIn()
+    {
+        StopAllCoroutines();
+        lightOverlay.gameObject.SetActive(false);
+        HurtOverlay.gameObject.SetActive(false);
+    }
+
+    private IEnumerator FadeInLightRoutine()
+    {
+        lightOverlay.gameObject.SetActive(true);
+        CanvasGroup lightOverlayCanvasGroup = lightOverlay.gameObject.GetComponent<CanvasGroup>();
+        lightOverlayCanvasGroup.alpha = 0;
+        while (lightOverlayCanvasGroup.alpha < 0.95f)
+        {
+            lightOverlayCanvasGroup.alpha += 0.005f;
+            yield return null;
+        }
+        
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
+
+    }
+    
+    
+    
 }
