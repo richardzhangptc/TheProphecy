@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerPull : MonoBehaviour
 {
-	[SerializeField] private Vector3 direction;
 	[SerializeField] private float grabDistance;
 	[SerializeField] private string grabButton;
 
@@ -13,6 +12,7 @@ public class PlayerPull : MonoBehaviour
 
 	private float MoveForce = 0.0f;
 	private Vector2 MoveDirection = Vector2.zero;
+	private Vector2 GrabDirection = Vector2.zero;
 
 	void Start()
 	{
@@ -21,30 +21,40 @@ public class PlayerPull : MonoBehaviour
 
 	void Update()
 	{
-		RaycastHit hit; 
-		if (!isGrabbing && Input.GetButton(grabButton)
-		&& Physics.Raycast(transform.position, direction, out hit, grabDistance))
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, GrabDirection, grabDistance, LayerMask.GetMask("Objects"));
+		Debug.DrawRay(transform.position, GrabDirection * grabDistance, hit.collider ? Color.red : Color.green);
+		if (!isGrabbing && Input.GetKeyDown(grabButton) && hit != null && hit.transform != null)
 		{
 			GameObject go = hit.transform.gameObject;
 			if (go.tag == "pullable")
 			{
+				Debug.Log("grab");
 				isGrabbing = true;
+				go.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 				currentObject = go;
 			}
 		}
-		else if (isGrabbing)
+		else if (isGrabbing && Input.GetKeyDown(grabButton))
 		{
+			Debug.Log("let go");
 			isGrabbing = false;
+			currentObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 			currentObject = null;
 		}
 
 	}
 
+	// A script attacted to the player
 	public void UpdateForces(float moveForce, Vector2 moveDirection)
 	{
 		MoveForce = moveForce;
 		MoveDirection = moveDirection;
+		if (moveDirection != Vector2.zero)
+		{
+			GrabDirection = moveDirection;
+		}
 	}
+
 
 	void FixedUpdate()
 	{
