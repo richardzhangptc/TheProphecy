@@ -9,8 +9,8 @@ public class PressurePlate : MonoBehaviour
 	[SerializeField] private UnityEvent _ReleasePlate;
 
 	// Pressure plate state
-	enum PlateState {Pressed, Released};
-	private PlateState pstate; 
+	public enum PlateState {Pressed, Released};
+	public PlateState pstate; 
 
 	private int NumActivatorsOnPlate;
 
@@ -27,12 +27,10 @@ public class PressurePlate : MonoBehaviour
 	{
 		if (pstate == PlateState.Released)
 		{
-			Debug.Log(other.tag);
 			foreach (string tag in activatorTags)
 			{
 				if (other.tag == tag)
 				{
-					Debug.Log("Pressed");
 					_PressPlate?.Invoke();
 					pstate = PlateState.Pressed;
 					NumActivatorsOnPlate++;
@@ -57,12 +55,10 @@ public class PressurePlate : MonoBehaviour
 	{
 		if (pstate == PlateState.Pressed)
 		{
-			Debug.Log("Thing left");
 			foreach (string tag in activatorTags)
 			{
 				if (other.tag == tag)
 				{
-					Debug.Log("Activator leaves");
 					NumActivatorsOnPlate--;
 					break;
 				}
@@ -95,7 +91,6 @@ public class PressurePlate : MonoBehaviour
 	{
 		if (pstate == PlateState.Pressed && NumActivatorsOnPlate == 0)
 		{
-			Debug.Log("released " + NumActivatorsOnPlate);
 			_ReleasePlate?.Invoke();
 			pstate = PlateState.Released;
 		}
