@@ -12,7 +12,7 @@ public class MovingPlatformController : MonoBehaviour
     [SerializeField] private Transform endPoint1;
     [SerializeField] private Transform endPoint2;
     private bool towardsEnd1 =  true;
-    [SerializeField] private GameObject platformBounds;
+    //[SerializeField] private GameObject platformBounds;
 
 
     private void Start()
@@ -144,18 +144,18 @@ public class MovingPlatformController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "OracleHitBox")
+        if (other.gameObject.tag == "Oracle" || other.gameObject.tag == "OracleHitBox")
         {
             playerRB = Utils.Utils.Utils.FindClosestRootWithSprite(other.gameObject).GetComponent<Rigidbody2D>();
-            platformBounds.SetActive(false);
+            //platformBounds.SetActive(false);
         }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "OracleHitBox")
+        if (other.gameObject.tag == "Oracle" || other.gameObject.tag == "OracleHitBox")
         {
             playerRB = null;
-            platformBounds.SetActive(true);
+            //platformBounds.SetActive(true);
         }
     }
 }
