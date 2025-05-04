@@ -266,7 +266,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &8657399911046465054
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 527597946391681186}
   m_Layer: 7
   m_Name: Hitbox
-  m_TagString: PlayerHitBox
+  m_TagString: MonsterHitBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

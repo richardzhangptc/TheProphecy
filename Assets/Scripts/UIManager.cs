@@ -58,6 +58,7 @@ public class UIManager : MonoBehaviour
             StopAllCoroutines();
             lightOverlay.gameObject.SetActive(false);
             HurtOverlay.gameObject.SetActive(false);
+            lighting = false;
         }
     }
 

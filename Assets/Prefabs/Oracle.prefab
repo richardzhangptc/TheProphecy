@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 3416982498539063462}
   m_Layer: 7
   m_Name: Hitbox
-  m_TagString: PlayerHitBox
+  m_TagString: OracleHitBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

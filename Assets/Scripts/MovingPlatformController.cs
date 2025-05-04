@@ -144,7 +144,7 @@ public class MovingPlatformController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "PlayerHitBox")
+        if (other.gameObject.tag == "OracleHitBox")
         {
             playerRB = Utils.Utils.Utils.FindClosestRootWithSprite(other.gameObject).GetComponent<Rigidbody2D>();
             platformBounds.SetActive(false);
@@ -152,7 +152,7 @@ public class MovingPlatformController : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "PlayerHitBox")
+        if (other.gameObject.tag == "OracleHitBox")
         {
             playerRB = null;
             platformBounds.SetActive(true);

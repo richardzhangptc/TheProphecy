@@ -17,7 +17,7 @@ public class EnemyTargetAcquisition : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collided) //expand on this later to check different targets and priorities
     {
-        if(collided.gameObject.tag == "PlayerHitBox")
+        if(collided.gameObject.tag == "MonsterHitBox")
         {
             LayerMask hitMask = LayerMask.GetMask("Player");
             hitMask += LayerMask.GetMask("Objects");

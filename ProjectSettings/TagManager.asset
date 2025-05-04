@@ -10,6 +10,8 @@ TagManager:
   - Oracle
   - gate
   - pullable
+  - MonsterHitBox
+  - OracleHitBox
   layers:
   - Default
   - TransparentFX

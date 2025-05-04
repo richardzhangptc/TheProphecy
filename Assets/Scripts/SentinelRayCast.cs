@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class SentinelRayCast : MonoBehaviour
 {
-    [SerializeField] private Vector2 dir = Vector2.right;
     private int numCasts = 20;
     private float angleSpread = 45f;
     private float rayLength = 30f;
@@ -18,7 +16,6 @@ public class SentinelRayCast : MonoBehaviour
 
     private void Start()
     {
-        dir.Normalize();
         meshFilter = GetComponent<MeshFilter>();
         mesh = new Mesh();
         mesh.name = "VisionCone";
@@ -28,13 +25,13 @@ public class SentinelRayCast : MonoBehaviour
     private void Update()
     {
         CastCone();
+
         if (!oracleInCast)
         {
             UIManager.Instance.CancelLightFadeIn();
         }
     }
 
-    
     private void CastCone()
     {
         oracleInCast = false;
@@ -52,7 +49,7 @@ public class SentinelRayCast : MonoBehaviour
         {
             float t = (float)i / (numCasts - 1);
             float angleOffset = Mathf.Lerp(-halfSpread, halfSpread, t);
-            Vector2 rayDirection = Quaternion.Euler(0, 0, angleOffset) * dir;
+            Vector2 rayDirection = Quaternion.Euler(0, 0, angleOffset) * transform.right;
 
             RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, rayDirection, rayLength, hitMask);
 
@@ -65,7 +62,7 @@ public class SentinelRayCast : MonoBehaviour
                     endPoint = hit.point;
                     break; // stop at first obstacle
                 }
-                else if (hit.collider.CompareTag("PlayerHitBox") && !oracleInCast)
+                else if (hit.collider.CompareTag("OracleHitBox") && !oracleInCast)
                 {
                     oracleInCast = true;
                     UIManager.Instance.FadeInLightOverlay();
@@ -88,12 +85,5 @@ public class SentinelRayCast : MonoBehaviour
         mesh.Clear();
         mesh.vertices = vertices;
         mesh.triangles = triangles;
-    }
-
-
-
-    public void SetDirection(Vector2 newDir)
-    {
-        dir = newDir.normalized;
     }
 }
