@@ -13,7 +13,7 @@ public class MonsterHitscan : MonoBehaviour
             KnockbackHandler enemyKnockback = other.transform.parent.GetComponent<KnockbackHandler>();
             enemyHealth.ReduceHealth(damage);
 
-            if (other.gameObject == null)
+            if (other.gameObject == null || enemyKnockback == null)
             {
                 return;
             }

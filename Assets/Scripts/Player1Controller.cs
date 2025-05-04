@@ -11,6 +11,8 @@ public class Player1Controller : MonoBehaviour
     private Animator myAnim;
     private float movementForce = 1000f;
 
+    [SerializeField] private GameObject attackEffect;
+
     private void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
@@ -59,16 +61,38 @@ public class Player1Controller : MonoBehaviour
 		}
         
     }
-
+    
     private void GetAttackInput()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log(myAnim.GetFloat("xDir"));
-            Debug.Log(myAnim.GetFloat("yDir"));
+            float x = myAnim.GetFloat("xDir");
+            float y = myAnim.GetFloat("yDir");
+
+            Vector2 rawDir = new Vector2(x, y);
+
+            Vector2 attackDir;
+            if (Mathf.Abs(x) > Mathf.Abs(y))
+                attackDir = new Vector2(Mathf.Sign(x), 0f);
+            else
+                attackDir = new Vector2(0f, Mathf.Sign(y));
+
+            float angle = 0f;
+            if (attackDir == Vector2.up)
+                angle = 90f;
+            else if (attackDir == Vector2.left)
+                angle = 180f;
+            else if (attackDir == Vector2.down)
+                angle = 270f;
+            
+            Vector3 localOffset = attackDir * 0.5f;
+            GameObject effect = Instantiate(attackEffect, transform.position, Quaternion.Euler(0f, 0f, angle), transform);
+            effect.transform.localPosition = localOffset;
+
             myAnim.SetTrigger("Attack");
         }
     }
+
 
 
     private void ApplyMovement()
