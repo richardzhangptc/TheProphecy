@@ -27,6 +27,7 @@ public class PressurePlate : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
+		Debug.Log(other.gameObject);
 		if (pstate == PlateState.Released)
 		{
 			foreach (string tag in activatorTags)

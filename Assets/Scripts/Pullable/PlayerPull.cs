@@ -44,6 +44,14 @@ public class PlayerPull : MonoBehaviour
 			
 			
 		} 
+		
+	}
+
+	public void ForceLetGo()
+	{
+		isGrabbing = false;
+		LevelManager.Instance.RecalculateGraphsNextSecond();
+		currentObject = null;
 	}
 
 	// A script attacted to the player

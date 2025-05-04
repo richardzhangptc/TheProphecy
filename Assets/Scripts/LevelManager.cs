@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private Collider2D graphArea;
     
+    
     #region Singleton and Awake
 
     public static LevelManager Instance;
@@ -34,6 +35,10 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator RecalculateGraphsCoroutine()
     {
+        if (graphArea == null)
+        {
+            yield break;
+        }
         yield return new WaitForSeconds(1);
         var guo = new GraphUpdateObject(graphArea.bounds);
         // guo.updatePhysics = true;

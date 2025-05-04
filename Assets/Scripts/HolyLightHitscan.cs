@@ -8,6 +8,11 @@ public class HolyLightHitscan : MonoBehaviour
     private int damage = 1;
     private int delay = 1;
     private bool blocked = false;
+
+    public void Deactivate()
+    {
+        Destroy(gameObject);
+    }
     
     private void OnTriggerStay2D(Collider2D other)
     {

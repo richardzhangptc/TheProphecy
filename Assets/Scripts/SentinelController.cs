@@ -16,10 +16,15 @@ public class SentinelController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, startingAngle);
     }
 
-    public void RotateToTargetAngleDeg(float tAngle)
+    public void RotateToTargetAngleDeg()
     {
-        targetAngle = tAngle;
+        targetAngle = 90;
         shouldRotate = true;
+    }
+
+    public void Deactivate()
+    {
+        Destroy(gameObject);
     }
 
     private void Update()

@@ -6,6 +6,7 @@ public class Gate : MonoBehaviour
 {
 
 	private bool isLocked;
+	private Animator myAnim;
 	
 	[SerializeField] private Sprite lockedSprite;
 	[SerializeField] private Sprite unLockedSprite;
@@ -25,6 +26,7 @@ public class Gate : MonoBehaviour
 
 	void Start()
 	{
+		myAnim = GetComponent<Animator>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		if (spriteRenderer != null)
 		{
@@ -41,6 +43,7 @@ public class Gate : MonoBehaviour
 		if (spriteRenderer != null && unLockedSprite != null)
 		{
 			spriteRenderer.sprite = unLockedSprite;
+			Debug.Log("OPEN");
 		}
 		GetComponent<BoxCollider2D>().isTrigger = true;
 		isLocked = false;

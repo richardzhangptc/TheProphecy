@@ -121,7 +121,6 @@ GameObject:
   - component: {fileID: 4599788459021055383}
   - component: {fileID: 1151064646794340455}
   - component: {fileID: 806588582164516982}
-  - component: {fileID: 8919784002760688516}
   m_Layer: 0
   m_Name: Sentinel
   m_TagString: Untagged
@@ -210,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b1d69d7e3360451a8127c61d92a5ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingAngle: 180
+  startingAngle: 90
   rotationSpeed: 90
 --- !u!114 &806588582164516982
 MonoBehaviour:
@@ -228,18 +227,6 @@ MonoBehaviour:
   defaultMat: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   maxHealth: 4
   currentHealth: 4
---- !u!114 &8919784002760688516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2681586581940810308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 045a3b4bec0b0466ea0e4fe0e3a885c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2851232966100047225
 GameObject:
   m_ObjectHideFlags: 0

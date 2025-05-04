@@ -6,7 +6,7 @@ using UnityEngine;
 public class SentinelRayCast : MonoBehaviour
 {
     private int numCasts = 20;
-    private float angleSpread = 45f;
+    private float angleSpread = 30f;
     private float rayLength = 30f;
 
     private bool oracleInCast = false;

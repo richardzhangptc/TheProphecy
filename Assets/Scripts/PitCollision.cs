@@ -10,6 +10,7 @@ public class PitCollision : MonoBehaviour
 	void Start()
 	{
 		platforms = GameObject.FindGameObjectsWithTag("Platform");
+		Debug.Log(platforms.Length);
 	}
 
 

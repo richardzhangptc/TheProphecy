@@ -9,10 +9,12 @@ public class MovingPlatformController : MonoBehaviour
     private bool movement = false;
     private Rigidbody2D myRB;
     private Rigidbody2D playerRB;
+    private Rigidbody2D boxRB;
     [SerializeField] private Transform endPoint1;
     [SerializeField] private Transform endPoint2;
     private bool towardsEnd1 =  true;
-    //[SerializeField] private GameObject platformBounds;
+
+    [SerializeField] private PlayerPull puller;
 
 
     private void Start()
@@ -63,25 +65,14 @@ public class MovingPlatformController : MonoBehaviour
                 if (end1Distance > 0.1f)
                 {
                     Vector3 end1Dir = (endPoint1.position - transform.position).normalized;
-                    if (end1Distance > 3f)
+                    myRB.AddForce(end1Dir * 150, ForceMode2D.Force);
+                    if (playerRB != null)
                     {
-                        myRB.AddForce(end1Dir * 250f, ForceMode2D.Force);
-                        if (playerRB != null)
-                        {
-                            playerRB.AddForce(end1Dir * 250f, ForceMode2D.Force);
-                        }
-                        else
-                        {
-                            myRB.AddForce(end1Dir * 400f, ForceMode2D.Force); //if player isn't on it we add extra force
-                        }
+                        playerRB.AddForce(end1Dir * 150, ForceMode2D.Force);
                     }
-                    else
+                    if (boxRB != null)
                     {
-                        myRB.AddForce(end1Dir * 200f, ForceMode2D.Force);
-                        if (playerRB != null)
-                        {
-                            playerRB.AddForce(end1Dir * 200f, ForceMode2D.Force);
-                        }
+                        boxRB.AddForce(end1Dir * 150, ForceMode2D.Force);
                     }
                 }
                 else
@@ -97,25 +88,14 @@ public class MovingPlatformController : MonoBehaviour
                 {
                     Vector3 end2Dir = (endPoint2.position - transform.position).normalized;
                     
-                    if (end2Distance > 3f)
+                    myRB.AddForce(end2Dir * 150, ForceMode2D.Force);
+                    if (playerRB != null)
                     {
-                        myRB.AddForce(end2Dir * 250f, ForceMode2D.Force);
-                        if (playerRB != null)
-                        {
-                            playerRB.AddForce(end2Dir * 250f, ForceMode2D.Force);
-                        }
-                        else
-                        {
-                            myRB.AddForce(end2Dir * 400f, ForceMode2D.Force); //if player isn't on it we add extra force
-                        }
+                        playerRB.AddForce(end2Dir * 150, ForceMode2D.Force);
                     }
-                    else //it is close so slow down
+                    if (boxRB != null)
                     {
-                        myRB.AddForce(end2Dir * 200f, ForceMode2D.Force);
-                        if (playerRB != null)
-                        {
-                            playerRB.AddForce(end2Dir * 200f, ForceMode2D.Force);
-                        }
+                        boxRB.AddForce(end2Dir * 150, ForceMode2D.Force);
                     }
                 }
                 else
@@ -135,10 +115,17 @@ public class MovingPlatformController : MonoBehaviour
         {
             playerRB.velocity = Vector3.zero;
         }
-        
-        movement = false;
-        yield return new WaitForSeconds(2f);
-        movement = true;
+
+        if (movement == true)
+        {
+            movement = false;
+            yield return new WaitForSeconds(2f);
+            movement = true;
+        }
+        else
+        {
+            yield break;
+        }
         
     }
 
@@ -147,15 +134,31 @@ public class MovingPlatformController : MonoBehaviour
         if (other.gameObject.tag == "Oracle" || other.gameObject.tag == "OracleHitBox")
         {
             playerRB = Utils.Utils.Utils.FindClosestRootWithSprite(other.gameObject).GetComponent<Rigidbody2D>();
-            //platformBounds.SetActive(false);
+        }
+        
+        if (other.gameObject.tag == "pullable")
+        {
+            boxRB = Utils.Utils.Utils.FindClosestRootWithSprite(other.gameObject).GetComponent<Rigidbody2D>();
+            boxRB.gameObject.transform.position = transform.position;
+            if (puller != null)
+            {
+                puller.ForceLetGo();
+            }
+            
         }
     }
+    
+    
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Oracle" || other.gameObject.tag == "OracleHitBox")
         {
             playerRB = null;
-            //platformBounds.SetActive(true);
+        }
+        
+        if (other.gameObject.tag == "pullable")
+        {
+            boxRB = null;
         }
     }
 }
