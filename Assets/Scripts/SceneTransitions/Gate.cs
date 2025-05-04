@@ -33,6 +33,7 @@ public class Gate : MonoBehaviour
 		isLocked = true;
 		hasOracle = false;
 		hasMonster = false;
+		GetComponent<BoxCollider2D>().isTrigger = false;
 	}
 
 	public void Unlock()
@@ -41,6 +42,7 @@ public class Gate : MonoBehaviour
 		{
 			spriteRenderer.sprite = unLockedSprite;
 		}
+		GetComponent<BoxCollider2D>().isTrigger = true;
 		isLocked = false;
 	}
 
@@ -50,6 +52,7 @@ public class Gate : MonoBehaviour
 		{
 			spriteRenderer.sprite = lockedSprite;
 		}
+		GetComponent<BoxCollider2D>().isTrigger = false;
 		isLocked = true;
 	}
 
