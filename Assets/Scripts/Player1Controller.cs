@@ -51,6 +51,12 @@ public class Player1Controller : MonoBehaviour
             receivingMovementInput = false;
             moveDirection = Vector2.zero;
         }
+
+		PlayerPull playerPull = transform.GetComponent<PlayerPull>(); 
+		if (playerPull != null) 
+		{
+			playerPull.UpdateForces(movementForce, moveDirection);
+		}
         
     }
 

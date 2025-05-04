@@ -9,6 +9,7 @@ TagManager:
   - Monster
   - Oracle
   - gate
+  - pullable
   layers:
   - Default
   - TransparentFX
