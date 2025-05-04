@@ -10,15 +10,14 @@ public class SentinelController : MonoBehaviour
     private float targetAngle;
     private bool shouldRotate = false;
 
+    public void RotateToTargetAngleDeg(float tAngle)
+    {
+        targetAngle = tAngle;
+        shouldRotate = true;
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            targetAngle = 90f; // Z = 90° for north (up)
-            shouldRotate = true;
-        }
-
         if (shouldRotate)
         {
             float currentZ = transform.eulerAngles.z;

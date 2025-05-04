@@ -8,6 +8,7 @@ public class PressurePlateRelay : MonoBehaviour
 {
     [SerializeField] private List<PressurePlate> listOfPressurePlates = new List<PressurePlate>();
 	[SerializeField] private UnityEvent _relayActivation;
+	[SerializeField] private UnityEvent _relayDeactivation;
 
     private bool allTriggered = false;
 
@@ -25,7 +26,10 @@ public class PressurePlateRelay : MonoBehaviour
         if (allTriggered == true)
         {
             _relayActivation?.Invoke();
-            
+        }
+        else
+        {
+            _relayDeactivation?.Invoke();
         }
     }
 }
