@@ -37,7 +37,7 @@ public class PlayerPull : MonoBehaviour
 		else if (isGrabbing && (Input.GetKeyDown(grabButton) || Vector2.Distance(transform.position, currentObject.transform.position) > (grabDistance * 1.2)))
 		{
 			isGrabbing = false;
-			currentObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+			currentObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 			LevelManager.Instance.RecalculateGraphsNextSecond();
 			currentObject = null;
 			
