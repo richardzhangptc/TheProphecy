@@ -31,6 +31,7 @@ public class PitCollision : MonoBehaviour
 				if (currMPC != null && currMPC.playerOnPlatform())
 				{
 					onPlatform = true;
+					Debug.Log("CHICKEN JOCKEY");
 				}
 			}
 			
