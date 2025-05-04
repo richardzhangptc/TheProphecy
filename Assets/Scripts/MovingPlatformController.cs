@@ -77,7 +77,6 @@ public class MovingPlatformController : MonoBehaviour
                 }
                 else
                 {
-                    StartCoroutine(PauseThenContinue());
                     towardsEnd1 = false;
                 }
             }
@@ -100,7 +99,6 @@ public class MovingPlatformController : MonoBehaviour
                 }
                 else
                 {
-                    StartCoroutine(PauseThenContinue());
                     towardsEnd1 = true;
                 }
             }
@@ -108,26 +106,6 @@ public class MovingPlatformController : MonoBehaviour
 
     }
 
-    private IEnumerator PauseThenContinue()
-    {
-        myRB.velocity = Vector3.zero;
-        if (playerRB != null)
-        {
-            playerRB.velocity = Vector3.zero;
-        }
-
-        if (movement == true)
-        {
-            movement = false;
-            yield return new WaitForSeconds(2f);
-            movement = true;
-        }
-        else
-        {
-            yield break;
-        }
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
