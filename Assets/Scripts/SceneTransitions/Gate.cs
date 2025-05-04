@@ -5,6 +5,12 @@ using UnityEngine;
 public class Gate : MonoBehaviour
 {
 
+	private bool isLocked;
+	
+	[SerializeField] private Sprite lockedSprite;
+	[SerializeField] private Sprite unLockedSprite;
+	private SpriteRenderer spriteRenderer;
+
 	private bool hasMonster;
 	public bool HasMonster
 	{
@@ -19,35 +25,68 @@ public class Gate : MonoBehaviour
 
 	void Start()
 	{
+		spriteRenderer = GetComponent<SpriteRenderer>();
+		if (spriteRenderer != null)
+		{
+			spriteRenderer.sprite = lockedSprite;
+		}
+		isLocked = true;
 		hasOracle = false;
 		hasMonster = false;
+		GetComponent<BoxCollider2D>().isTrigger = false;
+	}
+
+	public void Unlock()
+	{
+		if (spriteRenderer != null && unLockedSprite != null)
+		{
+			spriteRenderer.sprite = unLockedSprite;
+		}
+		GetComponent<BoxCollider2D>().isTrigger = true;
+		isLocked = false;
+	}
+
+	public void Lock()
+	{
+		if (spriteRenderer != null && lockedSprite != null)
+		{
+			spriteRenderer.sprite = lockedSprite;
+		}
+		GetComponent<BoxCollider2D>().isTrigger = false;
+		isLocked = true;
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.tag == "Monster")
+		if (!isLocked)
 		{
-			Debug.Log("Monster in");
-			hasMonster = true;
-		}
-		else if (other.tag == "Oracle")
-		{
-			Debug.Log("Oracle in");
-			hasOracle = true;
+			if (other.tag == "Monster")
+			{
+				Debug.Log("Monster in");
+				hasMonster = true;
+			}
+			else if (other.tag == "Oracle")
+			{
+				Debug.Log("Oracle in");
+				hasOracle = true;
+			}
 		}
 	}
 
 	void OnTriggerExit2D(Collider2D other)
 	{
-		if (other.tag == "Monster")
+		if (!isLocked)
 		{
-			Debug.Log("Monster out");
-			hasMonster = false;
-		}
-		else if (other.tag == "Oracle")
-		{
-			Debug.Log("Oracle out");
-			hasOracle = false;
+			if (other.tag == "Monster")
+			{
+				Debug.Log("Monster out");
+				hasMonster = false;
+			}
+			else if (other.tag == "Oracle")
+			{
+				Debug.Log("Oracle out");
+				hasOracle = false;
+			}
 		}
 	}
 
