@@ -23,25 +23,23 @@ public class PlayerPull : MonoBehaviour
 	{
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, GrabDirection, grabDistance, LayerMask.GetMask("Objects"));
 		Debug.DrawRay(transform.position, GrabDirection * grabDistance, hit.collider ? Color.red : Color.green);
+
 		if (!isGrabbing && Input.GetKeyDown(grabButton) && hit != null && hit.transform != null)
 		{
 			GameObject go = hit.transform.gameObject;
 			if (go.tag == "pullable")
 			{
-				Debug.Log("grab");
 				isGrabbing = true;
 				go.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 				currentObject = go;
 			}
 		}
-		else if (isGrabbing && Input.GetKeyDown(grabButton))
+		else if (isGrabbing && (Input.GetKeyDown(grabButton) || Vector2.Distance(transform.position, currentObject.transform.position) > (grabDistance * 1.2)))
 		{
-			Debug.Log("let go");
 			isGrabbing = false;
 			currentObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 			currentObject = null;
-		}
-
+		} 
 	}
 
 	// A script attacted to the player
@@ -55,7 +53,6 @@ public class PlayerPull : MonoBehaviour
 		}
 	}
 
-
 	void FixedUpdate()
 	{
 		if (isGrabbing)
@@ -63,4 +60,5 @@ public class PlayerPull : MonoBehaviour
 			currentObject.GetComponent<Rigidbody2D>().AddForce(MoveForce * MoveDirection);
 		}
 	}
+
 }
