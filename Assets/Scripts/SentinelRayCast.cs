@@ -16,7 +16,6 @@ public class SentinelRayCast : MonoBehaviour
     private Mesh mesh;
     private MeshFilter meshFilter;
 
-
     private void Start()
     {
         dir.Normalize();
@@ -35,6 +34,7 @@ public class SentinelRayCast : MonoBehaviour
         }
     }
 
+    
     private void CastCone()
     {
         oracleInCast = false;
@@ -44,29 +44,37 @@ public class SentinelRayCast : MonoBehaviour
         Vector3[] vertices = new Vector3[numCasts + 1];
         int[] triangles = new int[(numCasts - 1) * 3];
 
-        vertices[0] = Vector3.zero; // origin of cone
+        vertices[0] = Vector3.zero;
 
-        LayerMask hitMask = LayerMask.GetMask("Player");
-        hitMask += LayerMask.GetMask("Objects");
-            
+        LayerMask hitMask = LayerMask.GetMask("Player", "Objects");
+
         for (int i = 0; i < numCasts; i++)
         {
             float t = (float)i / (numCasts - 1);
             float angleOffset = Mathf.Lerp(-halfSpread, halfSpread, t);
             Vector2 rayDirection = Quaternion.Euler(0, 0, angleOffset) * dir;
 
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, rayLength, hitMask);
-            Debug.DrawRay(transform.position, rayDirection * rayLength, hit.collider ? Color.red : Color.green);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, rayDirection, rayLength, hitMask);
 
-            if (hit.collider && hit.collider.tag == "PlayerHitBox" && !oracleInCast)
+            Vector3 endPoint = transform.position + (Vector3)(rayDirection * rayLength);
+
+            foreach (RaycastHit2D hit in hits)
             {
-                oracleInCast = true;
-                UIManager.Instance.FadeInLightOverlay();
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Objects"))
+                {
+                    endPoint = hit.point;
+                    break; // stop at first obstacle
+                }
+                else if (hit.collider.CompareTag("PlayerHitBox") && !oracleInCast)
+                {
+                    oracleInCast = true;
+                    UIManager.Instance.FadeInLightOverlay();
+                }
             }
 
-            // Use either the hit point or max length
-            Vector3 endPoint = (hit.collider ? (Vector3)hit.point : (Vector3)(rayDirection * rayLength));
-            vertices[i + 1] = transform.InverseTransformPoint(transform.position + endPoint);
+            vertices[i + 1] = transform.InverseTransformPoint(endPoint);
+
+            Debug.DrawRay(transform.position, rayDirection * rayLength, Color.yellow);
         }
 
         for (int i = 0; i < numCasts - 1; i++)
@@ -81,6 +89,8 @@ public class SentinelRayCast : MonoBehaviour
         mesh.vertices = vertices;
         mesh.triangles = triangles;
     }
+
+
 
     public void SetDirection(Vector2 newDir)
     {

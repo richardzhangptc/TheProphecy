@@ -42,6 +42,16 @@ public class MovingPlatformController : MonoBehaviour
         movement = false;
     }
 
+    public bool playerOnPlatform()
+    {
+        if (playerRB != null)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     private void FixedUpdate()
     {
         if (movement)

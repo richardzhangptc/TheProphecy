@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour
         lightOverlayCanvasGroup.alpha = 0;
         while (lightOverlayCanvasGroup.alpha < 0.95f)
         {
-            lightOverlayCanvasGroup.alpha += 0.005f;
+            lightOverlayCanvasGroup.alpha += 0.02f;
             yield return null;
         }
         
