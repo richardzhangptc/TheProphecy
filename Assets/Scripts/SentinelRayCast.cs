@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class SentinelRayCast : MonoBehaviour
 
     private Mesh mesh;
     private MeshFilter meshFilter;
+
 
     private void Start()
     {

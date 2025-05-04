@@ -17,7 +17,14 @@ public class Enemy1Hitscan : MonoBehaviour
             KnockbackHandler playerKnockback = other.transform.parent.GetComponent<KnockbackHandler>();
             
             playerHealth.ReduceHealth(damage);
-            // playerKnockback.ApplyKnockbackToSelf();
+            
+            if (other.gameObject == null)
+            {
+                return;
+            }
+            
+            Vector2 dir = (other.transform.position - transform.position).normalized;
+            playerKnockback.ApplyKnockbackToSelf(dir, 10, 1000f);
             
             blocked = true;
             StartCoroutine(ExpireBlock());

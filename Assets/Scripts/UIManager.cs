@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image HurtOverlay;
     [SerializeField] private Image lightOverlay;
     [SerializeField] private Slider healthSlider;
+    private bool lighting = false;
+        
     #region Singleton and Awake
 
     public static UIManager Instance;
@@ -51,13 +53,17 @@ public class UIManager : MonoBehaviour
 
     public void CancelLightFadeIn()
     {
-        StopAllCoroutines();
-        lightOverlay.gameObject.SetActive(false);
-        HurtOverlay.gameObject.SetActive(false);
+        if (lighting)
+        {
+            StopAllCoroutines();
+            lightOverlay.gameObject.SetActive(false);
+            HurtOverlay.gameObject.SetActive(false);
+        }
     }
 
     private IEnumerator FadeInLightRoutine()
     {
+        lighting = true;
         lightOverlay.gameObject.SetActive(true);
         CanvasGroup lightOverlayCanvasGroup = lightOverlay.gameObject.GetComponent<CanvasGroup>();
         lightOverlayCanvasGroup.alpha = 0;
@@ -69,6 +75,7 @@ public class UIManager : MonoBehaviour
         
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
+        lighting = false;
 
     }
     

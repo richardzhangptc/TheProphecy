@@ -19,7 +19,6 @@ public class Player1HealthManagement : MonoBehaviour
     public void ReduceHealth(int reduction)
     {
         UIManager.Instance.ShowHurtOverlay();
-        Debug.Log("HURT");
         currentHealth -= reduction;
         if (currentHealth <= 0)
         {
