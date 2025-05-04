@@ -5,14 +5,45 @@ using UnityEngine.SceneManagement;
 
 public class PitCollision : MonoBehaviour
 {
+	private GameObject[] platforms;
 
-	void OnTriggerEnter2D(Collider2D other)
+	void Start()
+	{
+		platforms = GameObject.FindGameObjectsWithTag("Platform");
+	}
+
+
+	void OnTriggerStay2D(Collider2D other)
 	{
 		Debug.Log("KILLL " + other.tag);
-		if (other.tag == "Monster" || other.tag == "Oracle")
+		// monster can't get on platform so dies
+		if (other.gameObject.tag == "Monster" || other.gameObject.tag == "MonsterHitBox")
 		{
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			killPlayer();
 		}
+		// Oracle is safe on platform, but otherwise dies
+		else if (other.gameObject.tag == "OracleHitBox" || other.gameObject.tag == "Oracle")
+		{
+			bool onPlatform = false;
+			foreach(var platform in platforms)
+			{
+				MovingPlatformController currMPC = platform.GetComponent<MovingPlatformController>();
+				if (currMPC != null && currMPC.playerOnPlatform())
+				{
+					onPlatform = true;
+				}
+			}
+			
+			if (!onPlatform)
+			{
+				killPlayer();
+			}
+		}
+	}
+
+	private void killPlayer()
+	{
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 }

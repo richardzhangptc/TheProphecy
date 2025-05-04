@@ -12,6 +12,7 @@ TagManager:
   - pullable
   - MonsterHitBox
   - OracleHitBox
+  - Platform
   layers:
   - Default
   - TransparentFX
