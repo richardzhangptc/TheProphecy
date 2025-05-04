@@ -38,7 +38,11 @@ public class PlayerPull : MonoBehaviour
 		{
 			isGrabbing = false;
 			currentObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+			LevelManager.Instance.RecalculateGraphsNextSecond();
 			currentObject = null;
+			
+			
+			
 		} 
 	}
 
