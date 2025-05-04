@@ -8,10 +8,12 @@ public class Player2Controller : MonoBehaviour
     private Vector2 moveDirection = Vector2.zero;
     private Rigidbody2D myRB;
     private float movementForce = 1000f;
+    private Animator myAnim;
 
     private void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
+        myAnim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -61,6 +63,8 @@ public class Player2Controller : MonoBehaviour
     {
         if(receivingMovementInput == true)
         {
+            myAnim.SetFloat("xDir", moveDirection.x);
+            myAnim.SetFloat("yDir", moveDirection.y);
             myRB.AddForce(moveDirection.normalized * movementForce, ForceMode2D.Force);
         }
     }
