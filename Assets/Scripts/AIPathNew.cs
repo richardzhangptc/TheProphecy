@@ -55,6 +55,7 @@ namespace Pathfinding {
             if (flee == true)
             {
                 FleePath fleePath = FleePath.Construct(transform.position, target.position, 10000);
+                fleePath.aimStrength = 1;
                 seeker.StartPath(fleePath, OnPathComplete);
             }
             else
