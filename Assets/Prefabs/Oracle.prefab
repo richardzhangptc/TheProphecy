@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2972459918921265330}
   - component: {fileID: 7366220973859203096}
   - component: {fileID: 1607329453357221915}
-  - component: {fileID: 6724265402115058841}
+  - component: {fileID: 6809776701992511646}
   m_Layer: 7
   m_Name: Oracle
   m_TagString: Oracle
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -356743808, guid: 0a50ed5ec0f5c4729b280a624e13dc2d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 72b657353619b4133910e29ca8976b91, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabDistance: 2
   grabButton: n
---- !u!58 &6724265402115058841
+--- !u!58 &6809776701992511646
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,9 +196,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.010557771, y: -0.21258599}
   serializedVersion: 2
-  m_Radius: 0.45
+  m_Radius: 0.16466016
 --- !u!1 &7175966031962308605
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8134529700614925259}
-  - component: {fileID: 3416982498539063462}
+  - component: {fileID: 1103870933571797575}
   m_Layer: 7
   m_Name: Hitbox
   m_TagString: OracleHitBox
@@ -225,13 +225,13 @@ Transform:
   m_GameObject: {fileID: 7175966031962308605}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.007, y: -0.082, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4382993468700386205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &3416982498539063462
+--- !u!58 &1103870933571797575
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -260,9 +260,9 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.00372684, y: -0.12829643}
   serializedVersion: 2
-  m_Radius: 0.55
+  m_Radius: 0.21460575

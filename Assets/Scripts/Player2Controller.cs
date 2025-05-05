@@ -7,7 +7,7 @@ public class Player2Controller : MonoBehaviour
     private bool receivingMovementInput = false;
     private Vector2 moveDirection = Vector2.zero;
     private Rigidbody2D myRB;
-    private float movementForce = 1000f;
+    private float movementForce = 500f;
     private Animator myAnim;
 
     private void Start()

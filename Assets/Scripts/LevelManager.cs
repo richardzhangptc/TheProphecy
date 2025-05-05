@@ -1,12 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
 
     [SerializeField] private Collider2D graphArea;
+    [SerializeField] private Player1Controller monster;
     
     
     #region Singleton and Awake
@@ -25,9 +29,25 @@ public class LevelManager : MonoBehaviour
         }
     }
     #endregion
-    
-    
-    
+
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "Lvl1_Section1")
+        {
+            monster.frozen = true;
+        }
+        else
+        {
+            monster.frozen = false;
+        }
+    }
+
+    public void Unfreeze()
+    {
+        monster.frozen = false;
+    }
+
+
     public void RecalculateGraphsNextSecond()
     {
         StartCoroutine(RecalculateGraphsCoroutine());

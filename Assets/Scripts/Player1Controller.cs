@@ -9,7 +9,8 @@ public class Player1Controller : MonoBehaviour
     private Vector2 moveDirection = Vector2.zero;
     private Rigidbody2D myRB;
     private Animator myAnim;
-    private float movementForce = 1000f;
+    private float movementForce = 500f;
+    public bool frozen = false;
 
     [SerializeField] private GameObject attackEffect;
 
@@ -23,6 +24,15 @@ public class Player1Controller : MonoBehaviour
     {
         GetMovementInput();
         GetAttackInput();
+
+        if (frozen)
+        {
+            myAnim.SetBool("isFrozen", true);
+        }
+        else
+        {
+            myAnim.SetBool("isFrozen", false);
+        }
     }
 
     private void FixedUpdate()
@@ -97,6 +107,10 @@ public class Player1Controller : MonoBehaviour
 
     private void ApplyMovement()
     {
+        if (frozen == true)
+        {
+            return;
+        }
         if(receivingMovementInput == true)
         {
             myAnim.SetFloat("xDir", moveDirection.x);
