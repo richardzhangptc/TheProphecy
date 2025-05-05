@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class HolyLightHitscan : MonoBehaviour
 {
-    private int damage = 1;
-    private float delay = 0.15f;
+    private int damage = 2;
+    private float delay = 0.07f;
     private bool blocked = false;
 
     public void Deactivate()

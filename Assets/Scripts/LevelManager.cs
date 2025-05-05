@@ -36,10 +36,6 @@ public class LevelManager : MonoBehaviour
         {
             monster.frozen = true;
         }
-        else
-        {
-            monster.frozen = false;
-        }
     }
 
     public void Unfreeze()
